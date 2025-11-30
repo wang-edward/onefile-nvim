@@ -1,17 +1,17 @@
 -- install lazy
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
-      { '\nPress any key to exit...' },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+    local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+    local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+            { out, 'WarningMsg' },
+            { '\nPress any key to exit...' },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -25,30 +25,34 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.wrap = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.termguicolors = true
 
+vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = [[%s/\s\+$//e]], }) -- remove whitespace on save
+
 -- plugins
 require('lazy').setup({
-  spec = {
-    {
-        'neovim/nvim-lspconfig',
-        { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-        { 'morhetz/gruvbox', name = 'gruvbox', priority = 1000 },
-        { 'lewis6991/gitsigns.nvim', opts = {} },
-        { "DaikyXendo/nvim-material-icon", dependencies = "nvim-tree/nvim-web-devicons" },
-        { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
-        { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
-        { 'nvim-tree/nvim-tree.lua', opts = {} },
-        { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-        { 'williamboman/mason.nvim', opts = {} },
-        { 'williamboman/mason-lspconfig.nvim', opts = {} },
-        { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-    }
-  },
-  { colorscheme = { 'gruvbox' } },
-  checker = { enabled = true },
+    spec = {
+        {
+            'neovim/nvim-lspconfig',
+            { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+            { 'morhetz/gruvbox', name = 'gruvbox', priority = 1000 },
+            { 'lewis6991/gitsigns.nvim', opts = {} },
+            { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+            { 'DaikyXendo/nvim-material-icon', dependencies = 'nvim-tree/nvim-web-devicons' },
+            { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+            { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+            { 'nvim-tree/nvim-tree.lua', opts = {} },
+            { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+            { 'williamboman/mason.nvim', opts = {} },
+            { 'williamboman/mason-lspconfig.nvim', opts = {} },
+            { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+        }
+    },
+    { colorscheme = { 'gruvbox' } },
+    checker = { enabled = true },
 })
 
 -- keymap
@@ -79,4 +83,4 @@ map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
 map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd('colorscheme gruvbox')
