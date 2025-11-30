@@ -37,6 +37,7 @@ require('lazy').setup({
         { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
         { 'morhetz/gruvbox', name = 'gruvbox', priority = 1000 },
         { 'lewis6991/gitsigns.nvim', opts = {} },
+        { "DaikyXendo/nvim-material-icon", dependencies = "nvim-tree/nvim-web-devicons" },
         { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
         { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
         { 'nvim-tree/nvim-tree.lua', opts = {} },
