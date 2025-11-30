@@ -35,6 +35,7 @@ require('lazy').setup({
     {
         'neovim/nvim-lspconfig',
         { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+        { 'morhetz/gruvbox', name = 'gruvbox', priority = 1000 },
         { 'lewis6991/gitsigns.nvim', opts = {} },
         { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
         { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
@@ -45,7 +46,7 @@ require('lazy').setup({
         { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
     }
   },
-  { colorscheme = { 'catppuccin' } },
+  { colorscheme = { 'gruvbox' } },
   checker = { enabled = true },
 })
 
@@ -66,6 +67,8 @@ map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-o>', '<C-o>zz', opts)
 map('n', '<C-i>', '<C-i>zz', opts)
 map('n', '<leader>e', ':NvimTreeToggle<cr>')
+map('n', '<leader>/', 'gcc', { desc = 'comment', remap = true, silent = true })
+map('v', '<leader>/', 'gc', { desc = 'comment', remap = true, silent = true })
 map('n', '<leader>q', '<cmd>qa<cr>', { desc = 'quit' }) -- :qa
 map('n', '<leader>w', '<cmd>w<cr>', { desc = 'write' })
 map('n', '<leader>c', '<cmd>bdelete<cr>', { desc = 'close tab' })
@@ -75,4 +78,4 @@ map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
 map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
 
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd("colorscheme gruvbox")
