@@ -63,14 +63,16 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>s', builtin.live_grep, { desc = 'Telescope live grep' })
 
-map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-h>', '<C-w>h', opts) -- move windows
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
-map('n', '<C-u>', '<C-u>zz', opts)
+map('n', '<C-u>', '<C-u>zz', opts) -- center after goto
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-o>', '<C-o>zz', opts)
 map('n', '<C-i>', '<C-i>zz', opts)
+map("v", "<", "<gv", opts) -- don't deselect after indent
+map("v", ">", ">gv", opts)
 map('n', '<leader>e', ':NvimTreeToggle<cr>')
 map('n', '<leader>/', 'gcc', { desc = 'comment', remap = true, silent = true })
 map('v', '<leader>/', 'gc', { desc = 'comment', remap = true, silent = true })
