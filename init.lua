@@ -29,6 +29,7 @@ vim.opt.wrap = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.termguicolors = true
+vim.opt.clipboard = "unnamedplus"
 
 vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = [[%s/\s\+$//e]], }) -- remove whitespace on save
 
