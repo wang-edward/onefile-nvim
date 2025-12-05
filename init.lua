@@ -31,7 +31,13 @@ vim.opt.splitbelow = true
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 
-vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = [[%s/\s\+$//e]], }) -- remove whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+        vim.cmd([[%s/\s\+$//e]]) -- remove trailing whitespace
+        vim.lsp.buf.format({ async = false }) -- format with lsp
+    end,
+})
 
 -- plugins
 require('lazy').setup({
