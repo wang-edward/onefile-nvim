@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     if vim.v.shell_error ~= 0 then
         vim.api.nvim_echo({
             { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-            { out, 'WarningMsg' },
+            { out,                            'WarningMsg' },
             { '\nPress any key to exit...' },
         }, true, {})
         vim.fn.getchar()
@@ -34,7 +34,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function()
-        vim.cmd([[%s/\s\+$//e]]) -- remove trailing whitespace
+        vim.cmd([[%s/\s\+$//e]])              -- remove trailing whitespace
         vim.lsp.buf.format({ async = false }) -- format with lsp
     end,
 })
@@ -44,18 +44,18 @@ require('lazy').setup({
     spec = {
         {
             'neovim/nvim-lspconfig',
-            { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-            { 'morhetz/gruvbox', name = 'gruvbox', priority = 1000 },
-            { 'lewis6991/gitsigns.nvim', opts = {} },
-            { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
-            { 'DaikyXendo/nvim-material-icon', dependencies = 'nvim-tree/nvim-web-devicons' },
-            { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
-            { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
-            { 'nvim-tree/nvim-tree.lua', opts = {} },
-            { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-            { 'williamboman/mason.nvim', opts = {} },
-            { 'williamboman/mason-lspconfig.nvim', opts = {} },
-            { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+            { 'catppuccin/nvim',                     name = 'catppuccin',                          priority = 1000 },
+            { 'morhetz/gruvbox',                     name = 'gruvbox',                             priority = 1000 },
+            { 'lewis6991/gitsigns.nvim',             opts = {} },
+            { 'lukas-reineke/indent-blankline.nvim', main = 'ibl',                                 opts = {} },
+            { 'DaikyXendo/nvim-material-icon',       dependencies = 'nvim-tree/nvim-web-devicons' },
+            { 'akinsho/bufferline.nvim',             dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+            { 'nvim-lualine/lualine.nvim',           dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+            { 'nvim-tree/nvim-tree.lua',             opts = {} },
+            { 'nvim-treesitter/nvim-treesitter',     build = ':TSUpdate' },
+            { 'williamboman/mason.nvim',             opts = {} },
+            { 'williamboman/mason-lspconfig.nvim',   opts = {} },
+            { 'nvim-telescope/telescope.nvim',       dependencies = { 'nvim-lua/plenary.nvim' } },
         }
     },
     { colorscheme = { 'gruvbox' } },
@@ -64,9 +64,9 @@ require('lazy').setup({
 
 -- lsp
 vim.diagnostic.config({
-    virtual_text = true,  -- Show error text inline
-    signs = true,         -- Show signs in gutter (the 'E' you see)
-    underline = true,     -- Show squiggly underlines
+    virtual_text = true, -- Show error text inline
+    signs = true,        -- Show signs in gutter (the 'E' you see)
+    underline = true,    -- Show squiggly underlines
     update_in_insert = false,
     severity_sort = true,
 })
