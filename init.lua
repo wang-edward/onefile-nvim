@@ -57,19 +57,45 @@ require('lazy').setup({
 })
 
 -- lsp
-vim.g.lspconfig_disable_deprecation_warnings = true
-local lspconfig = require("lspconfig")
+vim.diagnostic.config({
+    virtual_text = true,  -- Show error text inline
+    signs = true,         -- Show signs in gutter (the 'E' you see)
+    underline = true,     -- Show squiggly underlines
+    update_in_insert = false,
+    severity_sort = true,
+})
+vim.api.nvim_create_autocmd('CursorHold', {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+    end
+})
+local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+require('nvim-treesitter.configs').setup({
+    ensure_installed = { 'zig' },
+    highlight = { enable = true },
+})
+require('mason-lspconfig').setup({
+    ensure_installed = { 'zls' },
+})
 
-lspconfig.zls.setup({
-    on_attach = function(client, bufnr)
-        local opts = { buffer = bufnr, silent = true }
+local lspconfig = require('lspconfig')
+lspconfig.zls.setup({})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     end,
 })
-
 
 -- keymap
 local map = vim.keymap.set
