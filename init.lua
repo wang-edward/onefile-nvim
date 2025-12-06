@@ -29,6 +29,8 @@ vim.opt.wrap = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.termguicolors = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 
 vim.api.nvim_create_autocmd("BufWritePre", {
