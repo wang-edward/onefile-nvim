@@ -57,7 +57,19 @@ require('lazy').setup({
             { 'nvim-treesitter/nvim-treesitter',     build = ':TSUpdate' },
             { 'williamboman/mason.nvim',             opts = {} },
             { 'williamboman/mason-lspconfig.nvim',   opts = {} },
-            { 'nvim-telescope/telescope.nvim',       dependencies = { 'nvim-lua/plenary.nvim' } },
+            {
+                'nvim-telescope/telescope.nvim',
+                dependencies = { 'nvim-lua/plenary.nvim' },
+                opts = {
+                    defaults = {
+                        layout_strategy = 'flex',
+                        layout_config = {
+                            width = 0.9,
+                            height = 0.9,
+                        },
+                    },
+                }
+            },
         }
     },
     { colorscheme = { 'gruvbox' } },
