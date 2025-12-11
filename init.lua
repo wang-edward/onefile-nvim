@@ -102,7 +102,8 @@ local opts = { silent = true, noremap = true }
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>s', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>s', builtin.live_grep, { desc = 'Telescope find text' })
+vim.keymap.set('n', '<leader>l', builtin.resume, { desc = 'Telescope resume search' })
 
 map('n', '<C-h>', '<C-w>h', opts) -- move windows
 map('n', '<C-j>', '<C-w>j', opts)
