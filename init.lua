@@ -70,10 +70,32 @@ require('lazy').setup({
                     },
                 }
             },
+            {
+                'hrsh7th/nvim-cmp',
+                dependencies = {
+                    'hrsh7th/cmp-nvim-lsp',
+                    'hrsh7th/cmp-buffer',
+                },
+            },
         }
     },
     { colorscheme = { 'gruvbox' } },
     checker = { enabled = true },
+})
+
+-- autocomplete
+local cmp = require('cmp')
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    }),
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+    }
 })
 
 -- lsp
@@ -92,7 +114,9 @@ require('mason-lspconfig').setup({
     ensure_installed = { 'zls' },
     handlers = {
         function(server_name)
-            require('lspconfig')[server_name].setup({})
+            require('lspconfig')[server_name].setup({
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            })
         end,
     },
 })
