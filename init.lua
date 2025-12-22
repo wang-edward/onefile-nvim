@@ -164,6 +164,6 @@ map('n', '<leader>n', '<cmd>vsplit | enew<cr>', { desc = 'new file split' })
 map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
 map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
-map('n', '<leader>;', '<cmd>Lazy<cr>')
+map('n', '<leader>p', '<cmd>Lazy<cr>')
 
 vim.cmd('colorscheme gruvbox')
