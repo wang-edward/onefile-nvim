@@ -60,6 +60,15 @@ require('lazy').setup({
             { 'williamboman/mason.nvim',             opts = {} },
             { 'williamboman/mason-lspconfig.nvim',   opts = {} },
             {
+                'akinsho/toggleterm.nvim',
+                opts = {
+                    direction = 'float',
+                    float_opts = {
+                        border = 'curved',
+                    },
+                },
+            },
+            {
                 'nvim-telescope/telescope.nvim',
                 dependencies = { 'nvim-lua/plenary.nvim' },
                 opts = {
@@ -166,5 +175,10 @@ map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '<leader>p', '<cmd>Lazy<cr>')
 map('n', '<leader>gl', vim.diagnostic.open_float, opts) -- popup window of error
+map('n', '<leader>gg', function()
+    local Terminal = require('toggleterm.terminal').Terminal
+    local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, })
+    lazygit:toggle()
+end, { desc = 'lazygit' })
 
 vim.cmd('colorscheme gruvbox')
