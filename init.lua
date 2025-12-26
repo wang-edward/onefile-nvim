@@ -174,7 +174,7 @@ map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
 map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '<leader>p', '<cmd>Lazy<cr>')
-map('n', '<leader>gl', vim.diagnostic.open_float, opts) -- popup window of error
+map('n', 'gl', vim.diagnostic.open_float, opts) -- popup window of error
 map('n', '<leader>gg', function()
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, })
