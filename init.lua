@@ -43,6 +43,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
+-- language specific
+local lang_indent = { scheme = 2, python = 2 }
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = vim.tbl_keys(lang_indent),
+    callback = function()
+        vim.opt_local.tabstop = lang_indent[vim.bo.filetype]
+        vim.opt_local.shiftwidth = lang_indent[vim.bo.filetype]
+    end,
+})
+
 -- plugins
 require('lazy').setup({
     spec = {
