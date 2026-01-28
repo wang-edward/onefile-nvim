@@ -70,6 +70,7 @@ require('lazy').setup({
             { 'nvim-treesitter/nvim-treesitter',     build = ':TSUpdate' },
             { 'williamboman/mason.nvim',             opts = {} },
             { 'williamboman/mason-lspconfig.nvim',   opts = {} },
+            { 'HiPhish/rainbow-delimiters.nvim'},
             {
                 'akinsho/toggleterm.nvim',
                 opts = {
