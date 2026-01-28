@@ -71,6 +71,7 @@ require('lazy').setup({
             { 'williamboman/mason.nvim',             opts = {} },
             { 'williamboman/mason-lspconfig.nvim',   opts = {} },
             { 'HiPhish/rainbow-delimiters.nvim'},
+            { 'folke/which-key.nvim', event = 'VeryLazy', opts = {} },
             {
                 'akinsho/toggleterm.nvim',
                 opts = {
