@@ -178,6 +178,7 @@ map('n', '<leader>c', '<cmd>bdelete<cr>', { desc = 'close tab' })
 map('n', '<leader>t', '<cmd>tabnew<cr>', { desc = 'new tab' }) -- :enew
 map('n', '<leader>n', '<cmd>vsplit | enew<cr>', { desc = 'new file split' })
 map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
+map('n', '<leader>h', '<cmd>noh<cr>', { desc = 'no highlight' })
 map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '<leader>p', '<cmd>Lazy<cr>')
