@@ -172,7 +172,7 @@ map("v", ">", ">gv", opts)
 map('n', '<leader>e', ':NvimTreeToggle<cr>')
 map('n', '<leader>/', 'gcc', { desc = 'comment', remap = true, silent = true })
 map('v', '<leader>/', 'gc', { desc = 'comment', remap = true, silent = true })
-map('n', '<leader>q', '<cmd>qa<cr>', { desc = 'quit' }) -- :qa
+map('n', '<leader>q', '<cmd>q<cr>', { desc = 'close window' })
 map('n', '<leader>w', '<cmd>w<cr>', { desc = 'write' })
 map('n', '<leader>c', '<cmd>bdelete<cr>', { desc = 'close tab' })
 map('n', '<leader>t', '<cmd>tabnew<cr>', { desc = 'new tab' }) -- :enew
