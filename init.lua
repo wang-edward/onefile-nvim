@@ -35,12 +35,17 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 
+-- autoformat on write
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function()
         vim.cmd([[%s/\s\+$//e]])              -- remove trailing whitespace
         vim.lsp.buf.format({ async = false }) -- format with lsp
     end,
+})
+-- reload when file changes
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+    command = "checktime",
 })
 
 -- language specific
