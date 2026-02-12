@@ -179,8 +179,8 @@ map('n', '<leader>/', 'gcc', { desc = 'comment', remap = true, silent = true })
 map('v', '<leader>/', 'gc', { desc = 'comment', remap = true, silent = true })
 map('n', '<leader>q', '<cmd>q<cr>', { desc = 'close window' })
 map('n', '<leader>w', '<cmd>w<cr>', { desc = 'write' })
-map('n', '<leader>c', '<cmd>bp | bd #<cr>', { desc = 'close tab' })
-map('n', '<leader>t', '<cmd>tabnew<cr>', { desc = 'new tab' }) -- :enew
+map('n', '<leader>t', '<cmd>enew<cr>', { desc = 'new buffer ' })
+map('n', '<leader>c', '<cmd>bp | bd #<cr>', { desc = 'close buffer' })
 map('n', '<leader>n', '<cmd>vsplit | enew<cr>', { desc = 'new file split' })
 map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
 map('n', '<leader>h', '<cmd>noh<cr>', { desc = 'no highlight' })
@@ -198,5 +198,11 @@ map('n', '<leader>a', function()
     vim.cmd('%y+')
     vim.fn.setpos('.', p)
 end, { desc = 'copy whole file' })
+
+map('n', '<leader>T', '<cmd>tabnew<cr>', { desc = 'new tab' })
+map('n', '<leader>Q', '<cmd>tabclose<cr>', { desc = 'close tab' })
+for i = 1, 9 do
+    map('n', '<leader>' .. i, i .. 'gt', { desc = 'goto tab ' .. i })
+end
 
 vim.cmd('colorscheme gruvbox')
