@@ -174,7 +174,7 @@ map('n', '<leader>/', 'gcc', { desc = 'comment', remap = true, silent = true })
 map('v', '<leader>/', 'gc', { desc = 'comment', remap = true, silent = true })
 map('n', '<leader>q', '<cmd>q<cr>', { desc = 'close window' })
 map('n', '<leader>w', '<cmd>w<cr>', { desc = 'write' })
-map('n', '<leader>c', '<cmd>bdelete<cr>', { desc = 'close tab' })
+map('n', '<leader>c', '<cmd>bp | bd #<cr>', { desc = 'close tab' })
 map('n', '<leader>t', '<cmd>tabnew<cr>', { desc = 'new tab' }) -- :enew
 map('n', '<leader>n', '<cmd>vsplit | enew<cr>', { desc = 'new file split' })
 map('n', '<leader>v', '<cmd>split | enew<cr>', { desc = 'new file split vert' })
