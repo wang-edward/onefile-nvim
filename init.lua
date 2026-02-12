@@ -77,6 +77,7 @@ require('lazy').setup({
             { 'williamboman/mason-lspconfig.nvim',   opts = {} },
             { 'HiPhish/rainbow-delimiters.nvim' },
             { 'folke/which-key.nvim',                event = 'VeryLazy',                           opts = {} },
+            { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
             {
                 'akinsho/toggleterm.nvim',
                 opts = {
@@ -198,6 +199,8 @@ map('n', '<leader>a', function()
     vim.cmd('%y+')
     vim.fn.setpos('.', p)
 end, { desc = 'copy whole file' })
+map('n', '<leader>x', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'diagnostics' })
+map('n', '<leader>X', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'buffer diagnostics' })
 
 map('n', '<leader>T', '<cmd>tabnew<cr>', { desc = 'new tab' })
 map('n', '<leader>Q', '<cmd>tabclose<cr>', { desc = 'close tab' })
