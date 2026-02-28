@@ -210,4 +210,4 @@ for i = 1, 9 do
     map('n', '<leader>' .. i, i .. 'gt', { desc = 'goto tab ' .. i })
 end
 
-vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme gruvbox')
