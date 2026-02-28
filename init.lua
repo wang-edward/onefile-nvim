@@ -131,11 +131,11 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'zig', 'rust', 'python' },
+    ensure_installed = { 'zig', 'rust', 'python', 'lua' },
     highlight = { enable = true },
 })
 require('mason-lspconfig').setup({
-    ensure_installed = { 'zls', 'rust_analyzer', 'ty' },
+    ensure_installed = { 'zls', 'rust_analyzer', 'ty', 'lua_ls' },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
