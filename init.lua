@@ -131,11 +131,11 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'zig', 'rust' },
+    ensure_installed = { 'zig', 'rust', 'python' },
     highlight = { enable = true },
 })
 require('mason-lspconfig').setup({
-    ensure_installed = { 'zls', 'rust_analyzer' },
+    ensure_installed = { 'zls', 'rust_analyzer', 'ty' },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
@@ -201,6 +201,7 @@ map('n', '<leader>a', function()
 end, { desc = 'copy whole file' })
 map('n', '<leader>x', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'diagnostics' })
 map('n', '<leader>X', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'buffer diagnostics' })
+map('n', '<leader>F', function() vim.lsp.buf.format() end, { desc = 'format file' })
 
 map('n', '<leader>T', '<cmd>tabnew<cr>', { desc = 'new tab' })
 map('n', '<leader>Q', '<cmd>tabclose<cr>', { desc = 'close tab' })
