@@ -66,6 +66,7 @@ require('lazy').setup({
             'neovim/nvim-lspconfig',
             { 'catppuccin/nvim',                     name = 'catppuccin',                          priority = 1000 },
             { 'morhetz/gruvbox',                     name = 'gruvbox',                             priority = 1000 },
+            { 'folke/tokyonight.nvim',               name = 'tokyonight',                          priority = 1000 },
             { 'lewis6991/gitsigns.nvim',             opts = {} },
             { 'lukas-reineke/indent-blankline.nvim', main = 'ibl',                                 opts = {} },
             { 'DaikyXendo/nvim-material-icon',       dependencies = 'nvim-tree/nvim-web-devicons' },
@@ -77,7 +78,7 @@ require('lazy').setup({
             { 'williamboman/mason-lspconfig.nvim',   opts = {} },
             { 'HiPhish/rainbow-delimiters.nvim' },
             { 'folke/which-key.nvim',                event = 'VeryLazy',                           opts = {} },
-            { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+            { 'folke/trouble.nvim',                  dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
             {
                 'akinsho/toggleterm.nvim',
                 opts = {
@@ -209,4 +210,4 @@ for i = 1, 9 do
     map('n', '<leader>' .. i, i .. 'gt', { desc = 'goto tab ' .. i })
 end
 
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme tokyonight')
