@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
 })
 
 -- language specific
-local lang_indent = { scheme = 2, python = 2 }
+local lang_indent = { scheme = 2, python = 4 }
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = vim.tbl_keys(lang_indent),
