@@ -34,6 +34,7 @@ vim.opt.termguicolors = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.laststatus = 3 -- only 1 global statusline
 
 -- autoformat on write
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -102,7 +103,7 @@ require('lazy').setup({
                 }
             },
             { 'hrsh7th/nvim-cmp',        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
-            { 'greggh/claude-code.nvim', dependencies = 'nvim-lua/plenary.nvim',                           opts = {}, },
+            { 'greggh/claude-code.nvim', dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.4 }, }, },
         }
     },
     { colorscheme = { 'gruvbox' } },
