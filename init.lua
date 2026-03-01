@@ -101,7 +101,8 @@ require('lazy').setup({
                     },
                 }
             },
-            { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
+            { 'hrsh7th/nvim-cmp',        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
+            { 'greggh/claude-code.nvim', dependencies = 'nvim-lua/plenary.nvim',                           opts = {}, },
         }
     },
     { colorscheme = { 'gruvbox' } },
@@ -202,6 +203,8 @@ map('n', '<leader>a', function()
 end, { desc = 'copy whole file' })
 map('n', '<leader>x', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'diagnostics' })
 map('n', '<leader>X', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'buffer diagnostics' })
+map('n', '<leader>z', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
+map('t', '<Esc>', '<C-\\><C-n>', opts, { desc = 'exit terminal mode' })
 map('n', '<leader>F', function() vim.lsp.buf.format() end, { desc = 'format file' })
 
 map('n', '<leader>T', '<cmd>tabnew<cr>', { desc = 'new tab' })
