@@ -103,7 +103,7 @@ require('lazy').setup({
                 }
             },
             { 'hrsh7th/nvim-cmp',        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
-            { 'greggh/claude-code.nvim', dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.4 }, }, },
+            { 'greggh/claude-code.nvim', dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.7 }, }, },
         }
     },
     { colorscheme = { 'gruvbox' } },
