@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
 })
 
 -- language specific
-local lang_indent = { scheme = 2, python = 4 }
+local lang_indent = { scheme = 2, python = 4, haskell = 2 }
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = vim.tbl_keys(lang_indent),
@@ -102,8 +102,9 @@ require('lazy').setup({
                     },
                 }
             },
-            { 'hrsh7th/nvim-cmp',        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
-            { 'greggh/claude-code.nvim', dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.7 }, }, },
+            { 'hrsh7th/nvim-cmp',                        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
+            { 'greggh/claude-code.nvim',                 dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.7 }, }, },
+            { 'nvim-treesitter/nvim-treesitter-context', opts = { multiline_threshold = 1 } },
         }
     },
     { colorscheme = { 'gruvbox' } },
@@ -138,7 +139,7 @@ require('nvim-treesitter.configs').setup({
     highlight = { enable = true },
 })
 require('mason-lspconfig').setup({
-    ensure_installed = { 'zls', 'rust_analyzer', 'ty', 'lua_ls' },
+    ensure_installed = { 'zls', 'rust_analyzer', 'ruff', 'ty', 'lua_ls', 'hls' },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
