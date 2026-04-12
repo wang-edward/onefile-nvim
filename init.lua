@@ -135,7 +135,7 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'zig', 'rust', 'python', 'lua' },
+    ensure_installed = { 'zig', 'rust', 'python', 'lua', 'haskell' },
     highlight = { enable = true },
 })
 require('mason-lspconfig').setup({
@@ -162,7 +162,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- disable hls lint, retrie
 vim.lsp.config('hls', {
     flags = { debounce_text_changes = 500 },
-    settings = { haskell = { plugin = { hlint = { globalOn = false }, retrie = { globalOn = false } } } },
+    settings = { haskell = { formattingProvider = "none", plugin = { hlint = { globalOn = false }, retrie = { globalOn = false } } } },
 })
 
 -- keymap
