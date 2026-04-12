@@ -159,6 +159,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     end,
 })
+-- disable hls lint, retrie
+vim.lsp.config('hls', {
+    flags = { debounce_text_changes = 500 },
+    settings = { haskell = { plugin = { hlint = { globalOn = false }, retrie = { globalOn = false } } } },
+})
 
 -- keymap
 local map = vim.keymap.set
