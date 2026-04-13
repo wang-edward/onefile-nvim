@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
 })
 
 -- language specific
-local lang_indent = { scheme = 2, python = 4, haskell = 2 }
+local lang_indent = { scheme = 2, haskell = 2, python = 4 }
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = vim.tbl_keys(lang_indent),
@@ -104,7 +104,9 @@ require('lazy').setup({
             },
             { 'hrsh7th/nvim-cmp',                        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
             { 'greggh/claude-code.nvim',                 dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.7 }, }, },
+            { 'nvim-pack/nvim-spectre',                  dependencies = 'nvim-lua/plenary.nvim',                           opts = {} },
             { 'nvim-treesitter/nvim-treesitter-context', opts = { multiline_threshold = 1 } },
+            { 'folke/flash.nvim',                        opts = {} }
         }
     },
     { colorscheme = { 'gruvbox' } },
@@ -215,11 +217,16 @@ map('n', '<leader>bb', '<cmd>ClaudeCodeContinue<CR>', { desc = 'Claude Code cont
 map('n', '<leader>br', '<cmd>ClaudeCodeResume<CR>', { desc = 'Claude Code resume' })
 map('t', '<Esc>', '<C-\\><C-n>', opts, { desc = 'exit terminal mode' })
 map('n', '<leader>F', function() vim.lsp.buf.format() end, { desc = 'format file' })
+map('n', '<leader>;', '<cmd>edit $MYVIMRC<cr>', { desc = 'open init.lua' })
+map('n', '<leader>R', function() require('spectre').open() end, { desc = 'search & replace' })
 
 map('n', '<leader>T', '<cmd>tabnew<cr>', { desc = 'new tab' })
 map('n', '<leader>Q', '<cmd>tabclose<cr>', { desc = 'close tab' })
 for i = 1, 9 do
     map('n', '<leader>' .. i, i .. 'gt', { desc = 'goto tab ' .. i })
 end
+
+map('n', 's', function() require('flash').jump() end, { desc = 'Flash jump' })
+map('n', 'S', function() require('flash').treesitter() end, { desc = 'Flash treesitter' })
 
 vim.cmd('colorscheme gruvbox')
