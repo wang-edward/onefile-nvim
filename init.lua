@@ -103,7 +103,6 @@ require('lazy').setup({
                 }
             },
             { 'hrsh7th/nvim-cmp',                        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', }, },
-            { 'greggh/claude-code.nvim',                 dependencies = 'nvim-lua/plenary.nvim',                           opts = { window = { split_ratio = 0.7 }, }, },
             { 'nvim-pack/nvim-spectre',                  dependencies = 'nvim-lua/plenary.nvim',                           opts = {} },
             { 'nvim-treesitter/nvim-treesitter-context', opts = { multiline_threshold = 1 } },
             { 'folke/flash.nvim',                        opts = {} }
@@ -212,9 +211,6 @@ map('n', '<leader>a', function()
 end, { desc = 'copy whole file' })
 map('n', '<leader>x', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'diagnostics' })
 map('n', '<leader>X', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'buffer diagnostics' })
-map('n', '<leader>z', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
-map('n', '<leader>bb', '<cmd>ClaudeCodeContinue<CR>', { desc = 'Claude Code continue ' })
-map('n', '<leader>br', '<cmd>ClaudeCodeResume<CR>', { desc = 'Claude Code resume' })
 map('t', '<Esc>', '<C-\\><C-n>', opts, { desc = 'exit terminal mode' })
 map('n', '<leader>F', function() vim.lsp.buf.format() end, { desc = 'format file' })
 map('n', '<leader>;', '<cmd>edit $MYVIMRC<cr>', { desc = 'open init.lua' })
