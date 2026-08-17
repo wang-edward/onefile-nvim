@@ -199,6 +199,7 @@ map('n', 'L', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'H', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '<leader>p', '<cmd>Lazy<cr>')
 map('n', 'gl', vim.diagnostic.open_float, opts) -- popup window of error
+map('n', '<leader>b', '<cmd>Gitsigns blame_line<cr>', { desc = 'git blame line' })
 map('n', '<leader>gg', function()
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, })
@@ -211,6 +212,7 @@ map('n', '<leader>a', function()
 end, { desc = 'copy whole file' })
 map('n', '<leader>x', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'diagnostics' })
 map('n', '<leader>X', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'buffer diagnostics' })
+
 map('t', '<Esc>', '<C-\\><C-n>', opts, { desc = 'exit terminal mode' })
 map('n', '<leader>F', function() vim.lsp.buf.format() end, { desc = 'format file' })
 map('n', '<leader>;', '<cmd>edit $MYVIMRC<cr>', { desc = 'open init.lua' })
@@ -224,5 +226,12 @@ end
 
 map('n', 's', function() require('flash').jump() end, { desc = 'Flash jump' })
 map('n', 'S', function() require('flash').treesitter() end, { desc = 'Flash treesitter' })
+
+map('n', ']d', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = 'next diagnostic' })
+map('n', '[d', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = 'prev diagnostic' })
 
 vim.cmd('colorscheme gruvbox')
